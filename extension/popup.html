@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image Downloader Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Image Downloader Pro</h1>
+    <span id="count">Scanning…</span>
+  </header>
+
+  <section class="filters">
+    <label>Min size
+      <select id="minSize">
+        <option value="0">Any</option>
+        <option value="100">100px+</option>
+        <option value="300">300px+</option>
+        <option value="600">600px+</option>
+      </select>
+    </label>
+    <label><input type="checkbox" data-type="jpg" checked> JPG</label>
+    <label><input type="checkbox" data-type="png" checked> PNG</label>
+    <label><input type="checkbox" data-type="webp" checked> WebP</label>
+    <label><input type="checkbox" data-type="gif" checked> GIF</label>
+    <label><input type="checkbox" data-type="svg" checked> SVG</label>
+    <label><input type="checkbox" data-type="other" checked> Other</label>
+  </section>
+
+  <section class="bar">
+    <button id="all" type="button">Select all</button>
+    <button id="none" type="button">None</button>
+  </section>
+
+  <main id="grid"></main>
+  <p id="empty" hidden>No images found on this page.</p>
+
+  <footer>
+    <button id="download" type="button" disabled>Download (0)</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
