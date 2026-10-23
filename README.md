@@ -1,5 +1,7 @@
 # Image Downloader Pro
 
+**[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/kpihglmcefmhilbnldnigglcghljhene)**
+
 A Chrome extension (Manifest V3) that finds every image on the current page, lets you pick the ones you want, and downloads them in one click.
 
 - Finds `<img>` (incl. largest `srcset` and lazy-load attributes), `<picture>`, CSS backgrounds, SVG images, icons and `og:image`
