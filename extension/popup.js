@@ -68,8 +68,7 @@ function render() {
   list.forEach((i, idx) => {
     const d = document.createElement("div");
     d.className = "item" + (selected.has(i.url) ? " selected" : "");
-    d.style.setProperty("--i", Math.min(idx, 14));
-    const img = document.createElement("img");
+        const img = document.createElement("img");
     img.src = i.url;
     img.loading = "lazy";
     img.addEventListener("load", () => {
@@ -91,17 +90,8 @@ function render() {
   updateButton();
 }
 
-let countFrame;
 function countUp(shown, total) {
-  cancelAnimationFrame(countFrame);
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const start = performance.now();
-  const step = (now) => {
-    const t = reduce ? 1 : Math.min(1, (now - start) / 500);
-    $("count").textContent = `${Math.round(shown * t)} of ${total} images`;
-    if (t < 1) countFrame = requestAnimationFrame(step);
-  };
-  countFrame = requestAnimationFrame(step);
+  $("count").textContent = `${shown} of ${total} images`;
 }
 
 const label = (i) => `${i.w && i.h ? `${i.w}×${i.h} · ` : ""}${i.type.toUpperCase()}`;
