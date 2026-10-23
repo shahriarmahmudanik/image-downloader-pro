@@ -63,9 +63,12 @@ function render() {
   const list = visible();
   const grid = $("grid");
   grid.replaceChildren();
-  for (const i of list) {
+  $("scan").hidden = true;
+  grid.hidden = list.length === 0;
+  list.forEach((i, idx) => {
     const d = document.createElement("div");
     d.className = "item" + (selected.has(i.url) ? " selected" : "");
+    d.style.setProperty("--i", Math.min(idx, 14));
     const img = document.createElement("img");
     img.src = i.url;
     img.loading = "lazy";
@@ -82,18 +85,32 @@ function render() {
       updateButton();
     });
     grid.append(d);
-  }
+  });
   $("empty").hidden = list.length > 0;
-  $("count").textContent = `${list.length} of ${images.length} images`;
+  countUp(list.length, images.length);
   updateButton();
+}
+
+let countFrame;
+function countUp(shown, total) {
+  cancelAnimationFrame(countFrame);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const start = performance.now();
+  const step = (now) => {
+    const t = reduce ? 1 : Math.min(1, (now - start) / 500);
+    $("count").textContent = `${Math.round(shown * t)} of ${total} images`;
+    if (t < 1) countFrame = requestAnimationFrame(step);
+  };
+  countFrame = requestAnimationFrame(step);
 }
 
 const label = (i) => `${i.w && i.h ? `${i.w}×${i.h} · ` : ""}${i.type.toUpperCase()}`;
 
 function updateButton() {
   const n = visible().filter((i) => selected.has(i.url)).length;
-  $("download").textContent = `Download (${n})`;
+  $("dlLabel").textContent = `Download (${n})`;
   $("download").disabled = n === 0;
+  $("fill").style.width = "0";
 }
 
 async function init() {
@@ -105,6 +122,7 @@ async function init() {
     });
     images = results[0].result.map((i) => ({ ...i, type: typeOf(i.url) }));
   } catch {
+    $("scan").hidden = true;
     $("count").textContent = "Can't scan this page";
     $("empty").textContent = "Chrome doesn't allow extensions on this page (e.g. chrome:// or the Web Store).";
     $("empty").hidden = false;
@@ -117,13 +135,23 @@ async function init() {
   try { host = new URL(tab.url).hostname.replace(/^www\./, "").replace(/[^\w.-]/g, "_"); } catch {}
   $("download").addEventListener("click", () => {
     const todo = visible().filter((i) => selected.has(i.url));
+    let done = 0;
+    const tick = () => {
+      done++;
+      $("fill").style.width = `${(done / todo.length) * 100}%`;
+      if (done === todo.length) $("dlLabel").textContent = `Saved ${done} ✓`;
+    };
+    $("dlLabel").textContent = `Saving ${todo.length}…`;
     todo.forEach((i, idx) => {
       const ext = i.type === "other" ? "jpg" : i.type;
-      chrome.downloads.download({
-        url: i.url,
-        filename: `${host}/image-${String(idx + 1).padStart(3, "0")}.${ext}`,
-        conflictAction: "uniquify",
-      });
+      chrome.downloads.download(
+        {
+          url: i.url,
+          filename: `${host}/image-${String(idx + 1).padStart(3, "0")}.${ext}`,
+          conflictAction: "uniquify",
+        },
+        tick
+      );
     });
   });
 }

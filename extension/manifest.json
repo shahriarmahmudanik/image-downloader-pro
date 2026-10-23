@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Image Downloader Pro",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Find every image on a web page, pick the ones you want, and download them in one click.",
   "permissions": ["activeTab", "scripting", "downloads"],
   "action": {
