@@ -7,7 +7,9 @@ A Chrome extension (Manifest V3) that finds every image on the current page, let
 - Finds `<img>` (incl. largest `srcset` and lazy-load attributes), `<picture>`, CSS backgrounds, SVG images, icons and `og:image`
 - Filter by minimum size and file type, select all / none
 - Saves to `Downloads/<site-name>/image-001.jpg` and so on
+- Animated, dark UI with scanning, selection and download-progress effects (respects reduced-motion settings)
 - No account, no tracking, nothing leaves your browser
+- Optional "Buy me a coffee" link ([Ko-fi](https://ko-fi.com/shahriaranik)) if you'd like to support the project
 
 ## Install for development
 1. Open `chrome://extensions` and enable **Developer mode**
