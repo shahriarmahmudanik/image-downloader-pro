@@ -1,0 +1,15 @@
+Image Downloader Pro bundles the following third-party components for its
+on-device "Remove background" feature. Nothing is downloaded at run time and
+no image data leaves the user's computer.
+
+1. ONNX Runtime Web 1.31.1 (vendor/ort.wasm.min.js, vendor/ort-wasm-simd-threaded.*)
+   MIT License, Copyright (c) Microsoft Corporation. See licenses/ONNXRUNTIME-LICENSE.txt
+
+2. U^2-Net-small ("u2netp") model weights (models/u2netp.onnx)
+   Apache License 2.0, Copyright Xuebin Qin et al.
+   https://github.com/xuebinqin/U-2-Net  — see licenses/U2NET-LICENSE.txt
+   Paper: "U^2-Net: Going Deeper with Nested U-Structure for Salient Object
+   Detection", Pattern Recognition 2020.
+   The ONNX export is the file distributed by the rembg project
+   (https://github.com/danielgatis/rembg, MIT License — see licenses/REMBG-LICENSE.txt).
+   The pre- and post-processing in bgcore.js follows the approach used by rembg.

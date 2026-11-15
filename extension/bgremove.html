@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remove background · Image Downloader Pro</title>
+  <link rel="stylesheet" href="bgremove.css">
+</head>
+<body>
+  <header>
+    <img class="logo" src="icons/icon48.png" alt="" width="36" height="36">
+    <div>
+      <h1>Remove background</h1>
+      <p id="status">Loading…</p>
+    </div>
+  </header>
+
+  <p class="note">Runs on your computer. Your images are never uploaded. Works best on a single person or product against a plain background. Crowded scenes, dark subjects on dark backgrounds, hair and glass can be cut off, so check the preview before saving.</p>
+
+  <main id="list"></main>
+
+  <footer>
+    <button id="zip" type="button" disabled>Download all as ZIP</button>
+    <button id="files" type="button" class="ghost" disabled>Download separate files</button>
+  </footer>
+
+  <script src="vendor/ort.wasm.min.js"></script>
+  <script src="lib.js"></script>
+  <script src="bgcore.js"></script>
+  <script src="bgremove.js"></script>
+</body>
+</html>

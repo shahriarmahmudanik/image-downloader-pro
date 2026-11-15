@@ -1,9 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Image Downloader Pro",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Find every image on a web page, pick the ones you want, and download them in one click.",
-  "permissions": ["activeTab", "scripting", "downloads"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Download images from this page",
@@ -19,5 +23,12 @@
     "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   }
 }

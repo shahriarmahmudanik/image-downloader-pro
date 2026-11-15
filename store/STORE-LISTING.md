@@ -32,3 +32,19 @@ Leave all data-collection boxes unchecked. The extension collects, stores and tr
 3. Set developer name and verified contact email in the Account tab.
 4. Take 1–5 screenshots (1280×800) of the popup on an image-heavy page.
 5. Upload image-downloader-store.zip, paste this text, add the privacy URL, submit.
+
+
+## v1.2.0 additions
+
+**Add to the description:**
+- Download as ZIP, with original file names (or numbered names)
+- Convert images between JPG, PNG and WebP, resize to a max width and compress with a quality slider
+- "Load all images" scrolls the page so lazy-loaded images appear
+- Remove background on your computer, with a before/after preview. Nothing is uploaded.
+
+**Additional permission justification (optional host permissions, https://*/* and http://*/*):**
+Requested only when the user chooses ZIP, format conversion, resizing or background removal. It lets the extension read the image files the user selected so they can be bundled, re-encoded or processed on the user's own computer. It is not used for anything else and no data is sent anywhere.
+
+**Remote code:** No. All code, the WebAssembly engine and the AI model are bundled in the package. The extension's content security policy includes 'wasm-unsafe-eval' only so the bundled on-device WebAssembly engine can run.
+
+**Third-party notices:** see THIRD-PARTY-NOTICES.txt in the package (ONNX Runtime Web, MIT; U^2-Net-small model, Apache-2.0; rembg, MIT).

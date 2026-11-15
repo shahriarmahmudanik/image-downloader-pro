@@ -7,6 +7,10 @@ A Chrome extension (Manifest V3) that finds every image on the current page, let
 - Finds `<img>` (incl. largest `srcset` and lazy-load attributes), `<picture>`, CSS backgrounds, SVG images, icons and `og:image`
 - Filter by minimum size and file type, select all / none
 - Saves to `Downloads/<site-name>/image-001.jpg` and so on
+- Download as **ZIP**, with the image's original file name (or numbered names)
+- **Convert** images to JPG, PNG or WebP, **resize** to a max width and **compress** with a quality slider
+- **Load all images** scrolls the page so lazy-loaded images appear
+- **Remove background** runs on your computer (small U²-Net model + ONNX Runtime Web, both bundled; nothing is uploaded)
 - Animated, dark UI with scanning, selection and download-progress effects (respects reduced-motion settings)
 - No account, no tracking, nothing leaves your browser
 - Optional "Buy me a coffee" link ([Ko-fi](https://ko-fi.com/shahriaranik)) if you'd like to support the project
@@ -20,3 +24,6 @@ Permissions: `activeTab`, `scripting`, `downloads`.
 Privacy policy: https://shahriarmahmudanik.github.io/image-downloader-pro-privacy/
 
 Author: Shahriar Mahmud Anik
+
+## Third-party components
+ONNX Runtime Web (MIT), the U²-Net-small model (Apache-2.0) and the rembg project (MIT, ONNX export and processing approach). See `extension/THIRD-PARTY-NOTICES.txt` and `extension/licenses/`.
