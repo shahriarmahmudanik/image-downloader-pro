@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Image Downloader Pro",
   "version": "1.2.0",
-  "description": "Find every image on a web page, pick the ones you want, and download them in one click.",
+  "description": "Find every image on a page. Save as ZIP, convert, resize or remove backgrounds, all on your computer.",
   "permissions": [
     "activeTab",
     "scripting",
